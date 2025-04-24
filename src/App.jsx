@@ -13,6 +13,16 @@ function App() {
     setTask(""); // Clear input field
   };
 
+  // edit form 
+  const editTask = (index) => {
+    const newTask = prompt("Edit your task", tasks[index]);
+    if(newTask !== null && newTask.trim() !== "" ){
+      const updateTasks = [...tasks];
+      updateTasks[index] = newTask;
+      setTasks(updateTasks);
+    }
+  };
+
   const deleteTask = (index) => {
     const updateTask = tasks.filter((_,i) => i !== index )
     setTasks(updateTask);
@@ -86,6 +96,20 @@ function App() {
             }}
           >
             {t}
+            
+            <button onClick={() => editTask(index)} style={{
+               padding: "10px 15px",
+               marginLeft: "10px",
+               backgroundColor: "blue",
+               color: "white",
+               border: "none",
+               borderRadius: "5px",
+               cursor: "pointer",
+               fontSize: "16px",
+               float: "right",
+               marginTop: "-9px",
+               marginRight: "-10px"
+            }}>Edit</button>
             <button onClick={() => deleteTask(index)} style={{
                padding: "10px 15px",
                marginLeft: "10px",
